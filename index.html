@@ -30,8 +30,28 @@ body{
 .title{
     color:#ff4d7d;
     margin-bottom:20px;
-    z-index:5;
-    position:relative;
+    text-align:center;   /* ensures perfect centering */
+}
+
+.message{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%) scale(0);
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 10px 40px rgba(0,0,0,.2);
+    color:#ff4d7d;
+    width:320px;
+    z-index:10;
+    transition:.5s;
+
+    text-align:center;   /* ⭐ main fix */
+}
+
+.message.show{
+    transform:translate(-50%,-50%) scale(1);
 }
 
 /* Cake */
@@ -151,24 +171,7 @@ body{
 }
 
 /* CARD */
-.message{
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%) scale(0);
-    background:white;
-    padding:25px;
-    border-radius:20px;
-    box-shadow:0 10px 40px rgba(0,0,0,.2);
-    color:#ff4d7d;
-    width:320px;
-    z-index:10;
-    transition:.5s;
-}
 
-.message.show{
-    transform:translate(-50%,-50%) scale(1);
-}
 
 /* CONFETTI */
 .confetti{
@@ -252,12 +255,15 @@ body{
 </div>
 
 <div class="message" id="card">
-    <h2>🎉 Happy Birthday Mom 💖</h2>
-    <p>
-        You are my home, my strength, and my happiness 💕<br><br>
-        Thank you for everything 🫶
+    <h2 style="margin-bottom:10px;">🎉 Happy Birthday 🎉</br>
+      💖 Choti mumma 💖</h2>
+    <p style="line-height:1.6;">
+        You are my everything 🫶<br>
+        Love you always 💕
     </p>
-    <div style="font-size:50px;margin-top:10px;">🧸🎁🎈🎊</div>
+    <div style="font-size:50px; margin-top:15px;">
+        🧸 🎁 🎈 🎊
+    </div>
 </div>
 
 <!-- Disco -->
