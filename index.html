@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Birthday Party 🎂</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    height:100vh;
+    overflow:hidden;
+    background:linear-gradient(180deg,#ffd9e8,#fff7fb);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* Scene */
+.scene{
+    text-align:center;
+    position:relative;
+}
+
+.title{
+    color:#ff4d7d;
+    margin-bottom:20px;
+    z-index:5;
+    position:relative;
+}
+
+/* Cake */
+.cake-wrap{
+    position:relative;
+    width:280px;
+    margin:auto;
+}
+
+.plate{
+    width:300px;
+    height:20px;
+    background:#ddd;
+    border-radius:50%;
+    margin:auto;
+}
+
+.cake{
+    position:relative;
+    width:260px;
+    margin:auto;
+}
+
+/* Layers */
+.layer1{
+    width:260px;
+    height:90px;
+    background:#ff9ab7;
+    border-radius:12px;
+}
+
+.layer2{
+    width:220px;
+    height:70px;
+    background:#ffd8e5;
+    border-radius:12px;
+    position:absolute;
+    top:-55px;
+    left:20px;
+}
+
+.layer3{
+    width:180px;
+    height:55px;
+    background:white;
+    border-radius:12px;
+    position:absolute;
+    top:-95px;
+    left:40px;
+}
+
+/* Icing Drips */
+.drip{
+    position:absolute;
+    width:20px;
+    height:28px;
+    background:white;
+    border-radius:0 0 20px 20px;
+    top:30px;
+}
+.d1{left:20px;}
+.d2{left:70px;}
+.d3{left:120px;}
+
+/* Sprinkles */
+.sprinkle{
+    position:absolute;
+    width:6px;
+    height:10px;
+    border-radius:3px;
+}
+.s1{background:#ff4d7d; top:10px; left:40px;}
+.s2{background:#ffd54f; top:20px; left:90px;}
+.s3{background:#4dd2ff; top:15px; left:130px;}
+.s4{background:#8aff8a; top:25px; left:60px;}
+
+/* Cherries */
+.cherry{
+    position:absolute;
+    width:16px;
+    height:16px;
+    background:#ff2455;
+    border-radius:50%;
+    top:10px;
+}
+.c1{left:25px;}
+.c2{left:80px;}
+.c3{left:135px;}
+
+/* Candle */
+.candle{
+    width:14px;
+    height:50px;
+    background:repeating-linear-gradient(45deg,white,white 6px,#ff6a8f 6px,#ff6a8f 12px);
+    position:absolute;
+    top:-45px;
+    left:83px;
+    border-radius:4px;
+    cursor:pointer;
+}
+
+.flame{
+    width:18px;
+    height:24px;
+    background:radial-gradient(circle,#ffd54f,#ff8c00);
+    position:absolute;
+    top:-22px;
+    left:-2px;
+    border-radius:50% 50% 50% 0;
+    transform:rotate(-45deg);
+    animation:flicker .25s infinite alternate;
+}
+
+@keyframes flicker{
+    from{transform:rotate(-45deg) scale(1);}
+    to{transform:rotate(-45deg) scale(1.2);}
+}
+
+/* CARD */
+.message{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%) scale(0);
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 10px 40px rgba(0,0,0,.2);
+    color:#ff4d7d;
+    width:320px;
+    z-index:10;
+    transition:.5s;
+}
+
+.message.show{
+    transform:translate(-50%,-50%) scale(1);
+}
+
+/* CONFETTI */
+.confetti{
+    position:absolute;
+    width:8px;
+    height:14px;
+    animation:fall linear forwards;
+}
+
+@keyframes fall{
+    0%{transform:translateY(-100px) rotate(0deg);}
+    100%{transform:translateY(800px) rotate(720deg);}
+}
+
+/* DISCO BALL (NO ROTATION, JUST SHINE) */
+.disco{
+    position:absolute;
+    top:20px;
+    font-size:55px;
+    display:none;
+    filter:drop-shadow(0 0 10px rgba(255,255,255,0.8));
+}
+
+/* Shine sparkle */
+.disco::after{
+    content:"✨";
+    position:absolute;
+    top:-10px;
+    left:30px;
+    font-size:20px;
+    animation:shine 1.5s infinite alternate;
+}
+
+@keyframes shine{
+    from{opacity:0.3; transform:scale(0.8);}
+    to{opacity:1; transform:scale(1.3);}
+}
+
+.left{left:15px;}
+.right{right:15px;}
+
+/* PARTY BG */
+.party{
+    background:radial-gradient(circle,#fff,#ffd9e8,#ffc0cb);
+}
+</style>
+</head>
+
+<body>
+
+<div class="scene">
+    <h2 class="title">🎂 Click the Candle to Blow It Out 💖</h2>
+
+    <div class="cake-wrap">
+        <div class="cake">
+            <div class="layer1"></div>
+
+            <div class="layer2"></div>
+
+            <div class="layer3">
+                <div class="drip d1"></div>
+                <div class="drip d2"></div>
+                <div class="drip d3"></div>
+
+                <div class="sprinkle s1"></div>
+                <div class="sprinkle s2"></div>
+                <div class="sprinkle s3"></div>
+                <div class="sprinkle s4"></div>
+
+                <div class="cherry c1"></div>
+                <div class="cherry c2"></div>
+                <div class="cherry c3"></div>
+
+                <div class="candle" onclick="celebrate()">
+                    <div class="flame" id="flame"></div>
+                </div>
+            </div>
+        </div>
+        <div class="plate"></div>
+    </div>
+</div>
+
+<div class="message" id="card">
+    <h2>🎉 Happy Birthday Mom 💖</h2>
+    <p>
+        You are my home, my strength, and my happiness 💕<br><br>
+        Thank you for everything 🫶
+    </p>
+    <div style="font-size:50px;margin-top:10px;">🧸🎁🎈🎊</div>
+</div>
+
+<!-- Disco -->
+<div class="disco left">🪩</div>
+<div class="disco right">🪩</div>
+
+<script>
+function celebrate(){
+    document.getElementById("flame").style.display="none";
+    document.getElementById("card").classList.add("show");
+    document.body.classList.add("party");
+
+    document.querySelectorAll(".disco").forEach(d=>d.style.display="block");
+
+    const colors=["#ff4d7d","#ffd54f","#4dd2ff","#8aff8a","#ffffff"];
+
+    for(let i=0;i<150;i++){
+        let c=document.createElement("div");
+        c.className="confetti";
+        c.style.left=Math.random()*window.innerWidth+"px";
+        c.style.animationDuration=(Math.random()*3+2)+"s";
+        c.style.background=colors[Math.floor(Math.random()*colors.length)];
+        document.body.appendChild(c);
+    }
+}
+</script>
+
+</body>
+</html>
